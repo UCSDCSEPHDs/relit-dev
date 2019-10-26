@@ -1,0 +1,16 @@
+{
+  "name": "@relit/dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow-models/coco-ssd": "^2.0.0",
+    "@tensorflow/tfjs-node": "^1.2.11",
+    "express": "^4.17.1"
+  }
+}
