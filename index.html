@@ -1,0 +1,56 @@
+<!-- Load TensorFlow.js. This is required to use MobileNet. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.1"> </script>
+<!-- Load the MobileNet model. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@1.0.0"> </script>
+
+<html>
+    <body>
+        <input type='file' id='image-file' accept="img/jpg img/png" />
+        <button id='sbButton'>Submit</button>
+        <div>
+            <img id='image' width="512" height="512"/>
+
+            <dl>
+                <dt>ClassName</dt>
+                    <dd id="classname"></dd>
+                <dt>Confidence</dt>
+                    <dd id="confidence"></dd>
+            </dl>
+        </div>
+
+    </body>
+</html>
+
+
+<script>
+    document.getElementById("sbButton").addEventListener("click", onImageSubmit)
+    function onImageSubmit(){
+        var img = document.getElementById("image")
+        var file = document.getElementById("image-file")
+        img.setAttribute("src", "./asset/"+file.files[0].name)
+
+        mobilenet.load().then(model => {
+            model.classify(img).then((predictions) => {
+                var res = predictions[0]
+                console.log(res)
+                console.log(res.className)
+                var classname = document.getElementById("classname")
+                var confidence = document.getElementById("confidence")
+
+                classname.innerHTML = res.className
+                confidence.innerHTML = res.probability
+            })
+        })
+    }
+
+//   const img = document.getElementById('img');
+
+//   // Load the model.
+//   mobilenet.load().then(model => {
+//     // Classify the image.
+//     model.classify(img).then(predictions => {
+//       console.log('Predictions: ');
+//       console.log(predictions);
+//     });
+//   });
+</script>
