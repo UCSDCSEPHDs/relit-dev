@@ -13,7 +13,7 @@
     "@tensorflow/tfjs-node": "^1.2.11",
     "base64-to-uint8array": "^1.0.0",
     "canvas": "^2.6.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "image-to-base64": "^2.0.1",
     "jsdom": "^15.2.0"
   }
